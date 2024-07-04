@@ -2,8 +2,6 @@
 
 ## Articles
 
----
-
 ### Building Scalable and Testable Python Applications with Modular Monoliths 
 https://tidalascent.com/?p=1
 
@@ -43,9 +41,9 @@ code: https://github.com/jorzel/opentable
 ### SOLID principles
 https://levelup.gitconnected.com/s-o-l-i-d-principles-explained-in-python-with-examples-83b2b43bdcde
 
-## Github
-
 ---
+
+## Github
 
 ### Repo hexagonal with a lot of stars
 https://github.com/alex-grover/hexagonal-architecture-python/tree/main
@@ -56,6 +54,7 @@ https://github.com/johnnncodes/ddd-python-django/tree/master
 ### FastAPI + SQLAlchemy Todolist
 https://github.com/GArmane/python-fastapi-hex-todo/tree/master
 
+---
 
 ## Tools / Libraries
 
