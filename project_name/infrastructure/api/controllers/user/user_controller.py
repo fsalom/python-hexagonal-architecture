@@ -1,13 +1,10 @@
 from typing import List
-
 from fastapi import APIRouter
-
-from project_name.domain.services.user import UserServices
+from project_name.application.services.user import UserServices
 from project_name.infrastructure.adapters.user.user_in_memory import InMemoryUserAdapter
 from project_name.infrastructure.api.serializers.user.user_serializer import UserSerializer
 
 router = APIRouter()
-
 user_adapter = InMemoryUserAdapter()
 service = UserServices(user_adapter)
 
