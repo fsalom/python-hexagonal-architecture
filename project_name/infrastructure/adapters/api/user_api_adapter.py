@@ -1,20 +1,22 @@
 from typing import List
 from fastapi import APIRouter
 from project_name.application.services.user import UserServices
-from project_name.infrastructure.adapters.db.user import InMemoryUserAdapter
-from project_name.infrastructure.adapters.api.user_serializer import UserSerializer
+from project_name.infrastructure.adapters.api.models.user_dto import UserDTO
+from project_name.infrastructure.adapters.api.user_api_mapper import UserAPIMapper
+from project_name.infrastructure.adapters.db.user_db_adapter import InMemoryUserAdapter
 
 router = APIRouter()
 user_adapter = InMemoryUserAdapter()
 service = UserServices(user_adapter)
 
 
-@router.post("/users/", response_model=UserSerializer)
-def create_user(user_data: UserSerializer):
-    service.create(user=user_data)
+@router.post("/users/", response_model=UserDTO)
+def create_user(user_dto: UserDTO):
+    user = UserAPIMapper.from_model_to_entity(user_dto)
+    service.create(user=user)
 
 
-@router.get("/users/", response_model=List[UserSerializer])
+@router.get("/users/", response_model=List[UserDTO])
 def list_users():
     users = service.get()
-    return [UserSerializer.from_orm(user) for user in users]
+    return [UserAPIMapper.from_entity_to_model(user) for user in users]
