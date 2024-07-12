@@ -1,9 +1,9 @@
 from typing import List
 from fastapi import APIRouter
 from project_name.application.services.user import UserServices
-from project_name.infrastructure.adapters.api.models.user_dto import UserDTO
-from project_name.infrastructure.adapters.api.user_api_mapper import UserAPIMapper
-from project_name.infrastructure.adapters.db.user_db_adapter import InMemoryUserAdapter
+from project_name.infrastructure.adapters.api.user.models.user_dto import UserDTO
+from project_name.infrastructure.adapters.api.user.user_api_mapper import UserAPIMapper
+from project_name.infrastructure.adapters.memory.user.user_memory_adapter import InMemoryUserAdapter
 
 router = APIRouter()
 user_adapter = InMemoryUserAdapter()
