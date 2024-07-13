@@ -10,7 +10,7 @@ user_adapter = InMemoryUserAdapter()
 service = UserServices(user_adapter)
 
 
-@router.post("/users/", response_model=UserDTO)
+@router.post("/users/create", response_model=UserDTO)
 def create_user(user_dto: UserDTO):
     user = UserAPIMapper.from_model_to_entity(user_dto)
     service.create(user=user)
@@ -19,4 +19,4 @@ def create_user(user_dto: UserDTO):
 @router.get("/users/", response_model=List[UserDTO])
 def list_users():
     users = service.get()
-    return [UserAPIMapper.from_entity_to_model(user) for user in users]
+    return [UserAPIMapper.from_entity_to_model(user=user) for user in users]
