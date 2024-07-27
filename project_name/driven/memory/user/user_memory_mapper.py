@@ -1,5 +1,5 @@
 from project_name.domain.entities.user import User
-from project_name.infrastructure.adapters.memory.user.models.user_dto import UserDTO
+from project_name.driven.memory.user.models.user_dto import UserDTO
 
 
 class UserDBMapper:

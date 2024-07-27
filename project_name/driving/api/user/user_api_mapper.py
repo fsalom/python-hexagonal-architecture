@@ -1,5 +1,5 @@
 from project_name.domain.entities.user import User
-from project_name.infrastructure.adapters.api.user.models.user_dto import UserDTO
+from project_name.driving.api.user.models.user_dto import UserDTO
 
 
 class UserAPIMapper:
