@@ -1,10 +1,10 @@
+from project_name.application.ports.driven.user_repository_port import UserRepositoryPort
 from project_name.domain.entities.user import User
-from project_name.domain.ports.user import UserPort
 from project_name.driven.memory.user.models.user_dto import UserDTO
 from project_name.driven.memory.user.user_memory_mapper import UserDBMapper
 
 
-class InMemoryUserAdapter(UserPort):
+class InMemoryUserAdapter(UserRepositoryPort):
     def __init__(self):
         self.users = [
             UserDTO(id=1, name="John Doe", email="john.doe@example.com"),
