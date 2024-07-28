@@ -1,9 +1,4 @@
-from abc import ABC, abstractmethod
-
-from project_name.domain.entities.user import User
-
-
-class UserPort(ABC):
+class UserRepositoryPort(ABC):
     @abstractmethod
     def create(self, user: User):
         pass
