@@ -1,7 +1,7 @@
 from project_name.application.ports.driven.user_repository_port import UserRepositoryPort
 from project_name.domain.entities.user import User
 from project_name.driven.memory.user.models.user_dto import UserDTO
-from project_name.driven.memory.user.user_memory_mapper import UserDBMapper
+from project_name.driven.memory.user.user_memory_mapper import UserInMemoryMapper
 
 
 class InMemoryUserAdapter(UserRepositoryPort):
@@ -16,4 +16,4 @@ class InMemoryUserAdapter(UserRepositoryPort):
         self.users[user.id] = user
 
     def list_users(self) -> [User]:
-        return [UserDBMapper.from_model_to_entity(user_dto=user) for user in self.users]
+        return [UserInMemoryMapper.from_model_to_entity(user_dto=user) for user in self.users]
