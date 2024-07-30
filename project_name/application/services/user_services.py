@@ -1,5 +1,6 @@
+from project_name.application.ports.driven.user_repository_port import UserRepositoryPort
+from project_name.application.ports.driving.user_service_port import UserServicePort
 from project_name.domain.entities.user import User
-from project_name.application.ports.driving.user_service_port import UserPort
 
 
 class UserServices(UserServicePort):
