@@ -7,7 +7,7 @@ class UserServices(UserServicePort):
     def __init__(self, user_repository_port: UserRepositoryPort):
         self.user_repository_port = user_repository_port
 
-    def get(self) -> [User]:
+    def list_users(self) -> [User]:
         return self.user_repository_port.list_users()
 
     def create(self, user: User):
