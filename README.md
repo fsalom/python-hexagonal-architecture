@@ -1,5 +1,70 @@
 # Python Hexagonal Architecture
 
+## Overview
+
+This project implements a hexagonal architecture (Ports and Adapters) to separate business logic from external interfaces and infrastructure. The architecture ensures modularity and flexibility, allowing easy adaptation to new requirements and changes in external systems.
+
+## Project Structure
+
+```
+project/
+├── application/
+│   ├── services/
+│   │   ├── user_services.py
+│   └── ports/
+│       ├── driving
+│       │    └── user_adapter_port.py
+│       └── driven
+│            └── user_repository_port.py
+├── domain/
+│   ├── __init__.py
+│   └── entities/
+│       └── user.py
+├── driven/
+│   └── database/
+│       ├── dbo.py
+│       ├── database_user_mapper.py
+│       └── database_user_repository.py
+├── driving/
+│   ├── api/
+│   │   ├── dto.py
+│   │   ├── database_user_mapper.py
+│   │   └── api_user_adapter.py
+│   └── cli/
+│       └── cli_adapter.py
+├── tests/
+│   ├── __init__.py
+│   ├── application/
+│   ├── domain/
+│   ├── driven/
+│   └── driving/
+├── main.py
+├── README.md
+└── pyproject.toml
+
+```
+## Folder Descriptions
+
+- application/: Contains the application logic and services.
+  - services/: Implements business use cases and operations. For example, user_services.py handles user-related operations.
+  - ports/: Defines interfaces (ports) for driving and driven adapters.
+    - driving/: Interfaces for external systems to drive the application, like user_adapter_port.py.
+    - driven/: Interfaces for accessing external resources, like user_repository_port.py.
+    
+- domain/: Contains the core business logic and domain entities. 
+  - entities/: Defines business entities, such as user.py for user-related data and behavior.
+  
+- driven/: Contains adapters that implement the driven ports to interact with external systems.
+  - database/: Adapters for database interactions, such as database_user_repository.py for user data storage.
+
+- driving/: Contains adapters that implement the driving ports to handle incoming requests.
+  - api/: Handles HTTP requests and responses, e.g., api_user_adapter.py.
+  - cli/: Handles command-line interactions, e.g., cli_adapter.py.
+  
+- tests/: Contains unit and integration tests organized by the components they test.
+- main.py: The main entry point of the application, setting up the adapters and starting the system.
+- pyproject.toml: Configuration file for Python project, specifying dependencies and project metadata.
+
 ## Articles
 
 ### Building Scalable and Testable Python Applications with Modular Monoliths 
