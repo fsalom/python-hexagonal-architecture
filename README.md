@@ -65,6 +65,14 @@ project/
 - main.py: The main entry point of the application, setting up the adapters and starting the system.
 - pyproject.toml: Configuration file for Python project, specifying dependencies and project metadata.
 
+## Contributing
+
+Please read our CONTRIBUTING.md for guidelines on how to contribute to this project.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
 ## Articles
 
 - Building Scalable and Testable Python Applications with Modular Monoliths 
