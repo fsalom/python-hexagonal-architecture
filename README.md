@@ -1,87 +1,12 @@
-# Ejemplo de proyecto con arquitectura hexagonal
+# 🧱 Ejemplo de Proyecto con Arquitectura Hexagonal
 
-## 🐍 1. Instalar `pyenv`
+## 📖 Resumen General
 
-Si no lo tienes instalado:
+Este proyecto implementa una arquitectura hexagonal (Ports and Adapters) para separar la lógica de negocio de las interfaces externas y la infraestructura. Esta arquitectura garantiza modularidad y flexibilidad, permitiendo una fácil adaptación a nuevos requisitos o cambios en sistemas externos.
 
-```bash
-brew update
-brew install pyenv
-```
-Agrega esto a tu `~/.zshrc o ~/.bashrc`:
+👉 [Como instalar pyenv](./README_INSTALL_PYTHON.md)
 
-```bash
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-```
-
-Después, recarga el terminal:
-
-```bash
-source ~/.zshrc
-```
-
-## 📦 2. Instalar una Versión de Python
-
-```bash
-pyenv install 3.11.9
-```
-
-Esto instalará Python en:
-
-```bash
-~/.pyenv/versions/3.11.9/bin/python
-```
-
-Puedes listar las versiones disponibles con:
-
-```bash
-pyenv versions
-```
-
-## 🧠 3. Seleccionar una Versión por Proyecto (opcional)
-
-Para usar una versión específica en un proyecto:
-
-```bash
-cd /ruta/a/tu/proyecto
-pyenv local 3.11.9
-```
-
-Esto crea un archivo .python-version que PyCharm también puede detectar.
-
-## 💻 4. Configurar el Intérprete en PyCharm
-
-### Opción 1: Usar Python Instalado con pyenv (global o local)
-
-	1.	Abre tu proyecto en PyCharm
-	2.	Ve a Preferences → Project: <tu-proyecto> → Python Interpreter
-	3.	Haz clic en el icono de ⚙️ (rueda dentada) → Add...
-	4.	Elige System Interpreter
-	5.	En ... Browse, selecciona:
-	
-	~/.pyenv/versions/3.11.9/bin/python
-	
-	6.	Pulsa OK y espera a que PyCharm indexe el intérprete.
-
-### Opción 2: Crear un Entorno Virtual en PyCharm basado en pyenv
-
-  	1.	Ve a Preferences → Project: <tu-proyecto> → Python Interpreter
-	2.	⚙️ → Add... → elige Virtualenv Environment
-	3.	En Base interpreter, selecciona:
-
-	~/.pyenv/versions/3.11.9/bin/python
-
-	4.	PyCharm creará un entorno virtual y lo activará para tu proyecto.
-
-
-## Overview
-
-This project implements a hexagonal architecture (Ports and Adapters) to separate business logic from external interfaces and infrastructure. The architecture ensures modularity and flexibility, allowing easy adaptation to new requirements and changes in external systems.
-
-## Project Structure
+## 🗂️ Estructura del Proyecto
 
 ```
 project/
@@ -118,71 +43,71 @@ project/
 ├── main.py
 ├── README.md
 └── pyproject.toml
-
 ```
-## Folder Descriptions
 
-- application/: Contains the application logic and services.
-  - services/: Implements business use cases and operations. For example, user_services.py handles user-related operations.
-  - ports/: Defines interfaces (ports) for driving and driven adapters.
-    - driving/: Interfaces for external systems to drive the application, like user_adapter_port.py.
-    - driven/: Interfaces for accessing external resources, like user_repository_port.py.
-    
-- domain/: Contains the core business logic and domain entities. 
-  - entities/: Defines business entities, such as user.py for user-related data and behavior.
-  
-- driven/: Contains adapters that implement the driven ports to interact with external systems.
-  - database/: Adapters for database interactions, such as database_user_repository.py for user data storage.
+## 📁 Descripción de Carpetas
 
-- driving/: Contains adapters that implement the driving ports to handle incoming requests.
-  - api/: Handles HTTP requests and responses, e.g., api_user_adapter.py.
-  - cli/: Handles command-line interactions, e.g., cli_adapter.py.
-  
-- tests/: Contains unit and integration tests organized by the components they test.
-- main.py: The main entry point of the application, setting up the adapters and starting the system.
-- pyproject.toml: Configuration file for Python project, specifying dependencies and project metadata.
+- `application/`: Contiene la lógica de aplicación y los casos de uso.
+  - `services/`: Implementa los casos de uso del negocio. Por ejemplo, `user_services.py` gestiona operaciones relacionadas con usuarios.
+  - `ports/`: Define las interfaces (puertos) para los adaptadores driving y driven.
+    - `driving/`: Interfaces para sistemas externos que impulsan la aplicación, como `user_adapter_port.py`.
+    - `driven/`: Interfaces para acceder a recursos externos, como `user_repository_port.py`.
 
-## Contributing
+- `domain/`: Contiene la lógica principal del negocio y las entidades del dominio.
+  - `entities/`: Define las entidades de negocio, como `user.py`.
 
-Please read our CONTRIBUTING.md for guidelines on how to contribute to this project.
+- `driven/`: Contiene los adaptadores que implementan los puertos driven para interactuar con sistemas externos.
+  - `database/`: Adaptadores para interacción con bases de datos, como `database_user_repository.py`.
 
-## License
+- `driving/`: Contiene los adaptadores que implementan los puertos driving para manejar solicitudes entrantes.
+  - `api/`: Maneja peticiones/respuestas HTTP, por ejemplo `api_user_adapter.py`.
+  - `cli/`: Maneja interacciones por línea de comandos, por ejemplo `cli_adapter.py`.
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+- `tests/`: Contiene pruebas unitarias e integración organizadas por componente.
 
-## Articulos de interes
+- `main.py`: Punto de entrada principal de la aplicación. Configura adaptadores e inicia el sistema.
 
-- Building Scalable and Testable Python Applications with Modular Monoliths 
-  - https://tidalascent.com/?p=1
+- `pyproject.toml`: Archivo de configuración del proyecto Python (dependencias, metadatos, etc).
 
-- Problems of big django project
-  - https://alexgrover.me/writing/python-hexagonal-architecture
-  - ORMs don’t adequately separate data and behavior. They make it too easy to access the database from anywhere in your codebase - with simple “dot” access, you can issue a complex query that slows down your whole application and you might not even realize it! All of a sudden, your view code, your model code, and even helper functions are making database calls that eventually cause a bottleneck.
-  - Most frameworks don’t give you good guidance as to where the bulk of your code should actually go. Once you have a non-trivial app, your views start to get really big. There are different schools of thought on how to grow your application (see: Fat Models and Service Objects) but the Python community doesn’t seem to discuss them often, and the frameworks themselves don’t mention much about architecture at all in their documentation.
-  - Some generally bad conventions. One that comes to mind is overriding ORM methods and hooks in Django. When calling save() on an object can potentially mutate it or have side effects on other models, and you can also have a post_save hook with even more behavior that no one could figure out where else to put, it’s easy to write confusing, messy code. Obviously, no one sets out to write something poorly, but when you’re working with a large team it’s easy to add a couple lines of code in a place that seems right and realize later that it’s really hard to understand.
+## 🤝 Cómo Contribuir
 
-- Comparing Hexagonal Architecture with Other Patterns
-  - https://python.plainenglish.io/hexagonal-architecture-a-basic-guide-on-why-its-better-than-mvc-or-clean-architecture-7864f5f97b0a
+Por favor, consulta el archivo `CONTRIBUTING.md` para conocer las directrices de contribución al proyecto.
 
-- Flask Blog tutorial with Hexagonal Architecture(part 1-3)
-  - https://blog.devgenius.io/flask-blog-tutorial-with-hexagonal-architecture-part-1-6446e7e9aaaa
+## 🪪 Licencia
 
-- Good article with very clear domain explanation 
-  - https://medium.com/@bergraan/hexagonal-architecture-catch-em-all-496cc4a88734
-  - code: https://github.com/bergran/pokemon_project_example/tree/master
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
-- Ports and adapters
-  - https://hemanthhari2000.medium.com/the-ports-and-adapters-pattern-unraveling-the-mystery-2efbf678ab9b
+## 📚 Artículos de Interés
 
-- Visual explanation 
-  - https://medium.com/ssense-tech/hexagonal-architecture-there-are-always-two-sides-to-every-story-bc0780ed7d9c
+- Building Scalable and Testable Python Applications with Modular Monoliths  
+  🔗 https://tidalascent.com/?p=1
 
-- Tiny explantion
-  - https://douwevandermeij.medium.com/hexagonal-architecture-in-python-7468c2606b63
-  - code: https://github.com/douwevandermeij/voting-system/tree/initial/app
+- Problems of big Django project  
+  🔗 https://alexgrover.me/writing/python-hexagonal-architecture  
+  🔸 ORMs no separan adecuadamente los datos y el comportamiento.  
+  🔸 Muchos frameworks no guían bien dónde poner el grueso del código.  
+  🔸 Sobrescribir métodos del ORM puede derivar en código confuso.
 
-- Ports and adapters architecture. Python micro example
-  - https://towardsdev.com/ports-and-adapters-architecture-python-micro-example-751302906684
-  - code: https://github.com/jorzel/opentable
+- Comparing Hexagonal Architecture with Other Patterns  
+  🔗 https://python.plainenglish.io/hexagonal-architecture-a-basic-guide-on-why-its-better-than-mvc-or-clean-architecture-7864f5f97b0a
 
----
+- Flask Blog tutorial with Hexagonal Architecture (part 1-3)  
+  🔗 https://blog.devgenius.io/flask-blog-tutorial-with-hexagonal-architecture-part-1-6446e7e9aaaa
+
+- Buen artículo con explicación clara del dominio  
+  🔗 https://medium.com/@bergraan/hexagonal-architecture-catch-em-all-496cc4a88734  
+  🧑‍💻 Código: https://github.com/bergran/pokemon_project_example/tree/master
+
+- Ports and Adapters  
+  🔗 https://hemanthhari2000.medium.com/the-ports-and-adapters-pattern-unraveling-the-mystery-2efbf678ab9b
+
+- Explicación visual  
+  🔗 https://medium.com/ssense-tech/hexagonal-architecture-there-are-always-two-sides-to-every-story-bc0780ed7d9c
+
+- Mini explicación  
+  🔗 https://douwevandermeij.medium.com/hexagonal-architecture-in-python-7468c2606b63  
+  🧑‍💻 Código: https://github.com/douwevandermeij/voting-system/tree/initial/app
+
+- Ejemplo micro en Python  
+  🔗 https://towardsdev.com/ports-and-adapters-architecture-python-micro-example-751302906684  
+  🧑‍💻 Código: https://github.com/jorzel/opentable
