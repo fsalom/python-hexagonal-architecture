@@ -4,7 +4,7 @@
 
 Este proyecto implementa una arquitectura hexagonal (Ports and Adapters) para separar la lógica de negocio de las interfaces externas y la infraestructura. Esta arquitectura garantiza modularidad y flexibilidad, permitiendo una fácil adaptación a nuevos requisitos o cambios en sistemas externos.
 
-👉 [Como instalar pyenv](./README_INSTALL_PYTHON.md)
+👉 [Como instalar una versión de python](./README_INSTALL_PYTHON.md)
 
 ## 🗂️ Estructura del Proyecto
 
