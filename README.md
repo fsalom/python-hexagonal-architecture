@@ -61,21 +61,18 @@ Esto crea un archivo .python-version que PyCharm también puede detectar.
 	3.	Haz clic en el icono de ⚙️ (rueda dentada) → Add...
 	4.	Elige System Interpreter
 	5.	En ... Browse, selecciona:
-
-```bash
-~/.pyenv/versions/3.11.9/bin/python
-````
+	
+	~/.pyenv/versions/3.11.9/bin/python
+	
 	6.	Pulsa OK y espera a que PyCharm indexe el intérprete.
 
 ### Opción 2: Crear un Entorno Virtual en PyCharm basado en pyenv
 
-  1.	Ve a Preferences → Project: <tu-proyecto> → Python Interpreter
+  	1.	Ve a Preferences → Project: <tu-proyecto> → Python Interpreter
 	2.	⚙️ → Add... → elige Virtualenv Environment
 	3.	En Base interpreter, selecciona:
 
-```bash
-~/.pyenv/versions/3.11.9/bin/python
-```
+	~/.pyenv/versions/3.11.9/bin/python
 
 	4.	PyCharm creará un entorno virtual y lo activará para tu proyecto.
 
@@ -153,7 +150,7 @@ Please read our CONTRIBUTING.md for guidelines on how to contribute to this proj
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
-## Articles
+## Articulos de interes
 
 - Building Scalable and Testable Python Applications with Modular Monoliths 
   - https://tidalascent.com/?p=1
